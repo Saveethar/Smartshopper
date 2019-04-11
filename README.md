@@ -13,3 +13,5 @@ Barebone inventory and shopping cart capability, Integration with relevant payme
 *SmartShopperEcart Microservice -> Order provisioning of multiple products customer has selected
 
 *SmartShopperPayment Microservice -> Payment and Billing handling of provisioned Order
+
+UI layer - TBD
