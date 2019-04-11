@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.retail.shopper.smartshopperorder.jpa.OrderRepository;
 import com.retail.shopper.smartshopperorder.model.OrderAPIResponse;
 import com.retail.shopper.smartshopperorder.service.model.Product;
+import com.retail.shopper.smartshopperorder.service.model.User;
 import com.retail.shopper.smartshopperorder.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,25 +51,18 @@ public class OrderServiceImpl implements OrderService {
 			// restTemplate.getForObject("http://localhost:8080/users/register/"+CustomerId,
 			// User.class);
 
-			/*String userStr = utils.callApi(null, "GET",
+			String userStr = utils.callApi(null, "GET",
 					"http://localhost:9000/api/v1/users/register/"+customerId, null,
 					null);
 			Gson gson = new Gson();
 			User userObj = new User();
 			userObj = gson.fromJson(userStr, userObj.getClass());
 			
-			this.logger.info("User retrieved= " + userObj.toString());*/
-			
-			/*String productStr = utils.callApi(null, "GET",
-					"http://localhost:9001/api/v1/products/"+productId, null,
-					null);			
-			Product prodObj = new Product();
-			prodObj = gson.fromJson(productStr, prodObj.getClass());*/
+			this.logger.info("User retrieved= " + userObj.toString());
 			
 			String productArrStr = utils.callApi(null, "GET",
 					"http://localhost:9001/api/v1/products/", null,
 					null);
-			Gson gson = new Gson();			
 			List<Product> prodList = gson.fromJson(productArrStr, new TypeToken<List<Product>>() {
 			}.getType());
 			
