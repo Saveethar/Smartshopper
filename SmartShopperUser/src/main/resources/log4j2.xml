@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="5">
+	<Properties>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n
+		</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="INF"
+			fileName="C:/temp/SmartShopperLogin.log"
+			filePattern="C:/temp/SmartShopperLogin-%d{yyyy-MM-dd}-%i.log">
+
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+
+				<SizeBasedTriggeringPolicy size="19500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+
+			<LevelRangeFilter minLevel="INFO" maxLevel="DEBUG"
+				onMatch="ACCEPT" onMismatch="DENY" />
+
+		</RollingFile>
+
+		<RollingFile name="ERR"
+			fileName="C:/temp/SmartShopperLogin-error.log"
+			filePattern="C:/temp/SmartShopperLogin-error-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+
+				<SizeBasedTriggeringPolicy size="19500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+
+			<LevelRangeFilter minLevel="ERROR" maxLevel="ERROR"
+				onMatch="ACCEPT" onMismatch="DENY" />
+
+		</RollingFile>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.apache.cxf" additivity="false" level="OFF">
+			<AppenderRef ref="INF" />
+		</Logger>
+		<Root level="INFO">
+			<AppenderRef ref="INF" />
+			<AppenderRef ref="ERR" />
+			<AppenderRef ref="ConsoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>
